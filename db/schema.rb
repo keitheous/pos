@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403092315) do
+ActiveRecord::Schema.define(version: 20180403095629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20180403092315) do
     t.datetime "session"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "outlet_id"
+    t.index ["outlet_id"], name: "index_customers_on_outlet_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -58,8 +60,10 @@ ActiveRecord::Schema.define(version: 20180403092315) do
     t.datetime "updated_at", null: false
     t.bigint "customer_id"
     t.bigint "employee_id"
+    t.bigint "outlet_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["employee_id"], name: "index_orders_on_employee_id"
+    t.index ["outlet_id"], name: "index_orders_on_outlet_id"
   end
 
   create_table "outlets", force: :cascade do |t|
@@ -72,8 +76,10 @@ ActiveRecord::Schema.define(version: 20180403092315) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "customers", "outlets"
   add_foreign_key "employees", "outlets"
   add_foreign_key "items", "outlets"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "employees"
+  add_foreign_key "orders", "outlets"
 end
