@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403095629) do
+ActiveRecord::Schema.define(version: 20180403103633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,8 +61,10 @@ ActiveRecord::Schema.define(version: 20180403095629) do
     t.bigint "customer_id"
     t.bigint "employee_id"
     t.bigint "outlet_id"
+    t.bigint "item_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["employee_id"], name: "index_orders_on_employee_id"
+    t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["outlet_id"], name: "index_orders_on_outlet_id"
   end
 
@@ -81,5 +83,6 @@ ActiveRecord::Schema.define(version: 20180403095629) do
   add_foreign_key "items", "outlets"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "employees"
+  add_foreign_key "orders", "items"
   add_foreign_key "orders", "outlets"
 end
