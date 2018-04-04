@@ -1,25 +1,9 @@
+%h1
+  Staff Members
 .row
-  %h1
-    Staff Members
-.container.wrapper{style: 'background-color:red; height: 100%;'}
-  .row
-    .pull-right.btn.btn-primary
-      Add Member
-  .row
-    - @employees.each do |employee|
-      .tiles
-        = employee.name
-
-
-:css
-  .wrapper {
-    display: inline-block;
-
-  }
-  .tiles {
-    background-color: blue;
-    float: left;
-    width: 32%;
-    margin: 5px;
-    height:100px;
-  }
+  .pull-right.btn.btn-primary
+    Add Member
+%div
+  - @employees.each do |employee|
+    .tiles
+      = employee.name
