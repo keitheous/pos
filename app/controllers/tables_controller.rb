@@ -4,5 +4,6 @@ class TablesController < ApplicationController
   end
 
   def new
+    
   end
 end
