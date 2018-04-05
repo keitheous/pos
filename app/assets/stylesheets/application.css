@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+body{
+
+}
+
+.form-group {
+  
+}
+
+.padding-wrap{
+  padding: 30px;
+}
+
+.wrapper {
+  padding-top: 30px;
+}

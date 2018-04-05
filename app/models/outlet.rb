@@ -3,4 +3,5 @@ class Outlet < ApplicationRecord
   has_many :employees
   has_many :customers
   has_many :orders
+  # has_one :table
 end

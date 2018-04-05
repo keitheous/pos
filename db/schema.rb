@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180404013222) do
+ActiveRecord::Schema.define(version: 20180404065129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 20180404013222) do
     t.datetime "updated_at", null: false
     t.bigint "outlet_id"
     t.index ["outlet_id"], name: "index_employees_on_outlet_id"
+  end
+
+  create_table "floors", force: :cascade do |t|
+    t.string "x_range"
+    t.string "y_range"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "outlet_id"
+    t.index ["outlet_id"], name: "index_floors_on_outlet_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -85,13 +94,17 @@ ActiveRecord::Schema.define(version: 20180404013222) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "floor_id"
+    t.index ["floor_id"], name: "index_tables_on_floor_id"
   end
 
   add_foreign_key "customers", "outlets"
   add_foreign_key "employees", "outlets"
+  add_foreign_key "floors", "outlets"
   add_foreign_key "items", "outlets"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "employees"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "outlets"
+  add_foreign_key "tables", "floors"
 end
