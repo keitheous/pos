@@ -1,0 +1,18 @@
+%h1.padding-wrap
+  Register New Team Member
+.wrapper
+  = simple_form_for @item do |f|
+    .row.form-group
+      = f.label :name, class: 'col-sm-3 control-label', label: 'Name', require: true
+      .col-md-6
+        = f.text_field :name, class: 'form-control'
+    .row.form-group
+      = f.label :price, class: 'col-sm-3 control-label', label: 'Price', require: true
+      .col-md-6
+        = f.text_field :price, class: 'form-control'
+    .row.form-group
+      = f.label :description, class: 'col-sm-3 control-label', label: 'Image', require: true
+      .col-md-6
+        = f.text_field :description, class: 'form-control'
+    .row.form-group.col-sm-5
+      = f.submit 'Submit',:class => "btn btn-primary"

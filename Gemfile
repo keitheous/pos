@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem "haml-rails", "~> 1.0"
+gem 'simple_form'
+gem 'pry', '~> 0.10.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
